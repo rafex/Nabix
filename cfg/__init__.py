@@ -1,4 +1,7 @@
 # -*- coding: UTF-8 -*-
+'''
+@author: rafex
+'''
 import ConfigParser
 
 from ConfigParser import NoOptionError

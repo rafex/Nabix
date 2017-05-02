@@ -1,15 +1,13 @@
 #!env/bin/python
 # -*- coding: UTF-8 -*-
 '''
-Created on 08/02/2017
-
-@author: raúl
+@author: rafex
 '''
 from cfg import get
 from cfg import getInt
 from cfg import getBoolean
 import netifaces as ni
-from panel import app
+from application import app
 
 INTERFACE = get("server","interface")
 PORT = getInt("server","port")

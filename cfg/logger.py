@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 '''
-Created on 28/02/2017
-
-@author: raul
+@author: rafex
 '''
 import logging
 

@@ -1,7 +1,10 @@
 # -*- coding: UTF-8 -*-
+'''
+@author: rafex
+'''
 import uuid
 
-from panel import app
+from application import app
 from flask import request
 from flask import session
 from flask import redirect
@@ -13,7 +16,6 @@ from cfg.logger import logger_response
 @app.route('/index')
 def index():
     return 'Works!!!'
-
 
 @app.before_request
 def log_request_info():

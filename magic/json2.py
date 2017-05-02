@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 '''
-Created on 02/03/2017
-
-@author: Raúl
+@author: rafex
 '''
 import json
 from decimal import Decimal
