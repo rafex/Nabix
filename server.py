@@ -7,7 +7,7 @@ from cfg import get
 from cfg import getInt
 from cfg import getBoolean
 import netifaces as ni
-from application import app
+from nabix import app
 
 INTERFACE = get("server","interface")
 PORT = getInt("server","port")
