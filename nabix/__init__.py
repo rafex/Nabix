@@ -48,4 +48,4 @@ class User(db.Model):
         user = User.query.get(data['id'])
         return user
 
-from application import views, login
+from nabix import views, login

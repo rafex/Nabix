@@ -4,7 +4,7 @@
 '''
 import uuid
 
-from application import app
+from nabix import app
 from flask import request
 from flask import session
 from flask import redirect

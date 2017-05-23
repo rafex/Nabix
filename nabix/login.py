@@ -2,10 +2,10 @@
 '''
 @author: rafex
 '''
-from application import app
-from application import auth
-from application import User
-from application import db
+from nabix import app
+from nabix import auth
+from nabix import User
+from nabix import db
 from flask import Flask, abort, request, jsonify, g, url_for
 
 @auth.verify_password
