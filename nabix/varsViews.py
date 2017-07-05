@@ -3,7 +3,7 @@
 @author: rafex
 '''
 PATH = '/api/services/'
-GET =  'GET'
+GET = 'GET'
 POST = 'POST'
 PUT = 'PUT'
 OPTIONS = 'OPTIONS'
@@ -35,6 +35,7 @@ JSON_RESPONSE_SUCCESS = {
                     "message": "{message}"
                     }
                 }
+
 
 def success(message):
     JSON_RESPONSE_SUCCESS["response"]["message"] = None

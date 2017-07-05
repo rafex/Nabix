@@ -12,10 +12,12 @@ from flask import redirect
 from cfg.logger import logger_request
 from cfg.logger import logger_response
 
+
 @app.route('/')
 @app.route('/index')
 def index():
     return 'Works!!!'
+
 
 @app.before_request
 def log_request_info():
@@ -38,10 +40,10 @@ def log_request_info():
         header_string = header_string + ' '.join(header) + '\n'
 #     insert_log_in(request.remote_addr,request.get_data(),request.path,'Middleware',header_string,uuid_request,request.method)
 
+
 @app.after_request
 def after_request(response):
     uuid_request = session['uuid-request']
-    
     logger_response.info('-----------------------------------------------------------------------------------------------')
     logger_response.info('---- RESPONSE ---------------------------------------------------------------------------------')
     logger_response.info('-----------------------------------------------------------------------------------------------')
@@ -55,11 +57,11 @@ def after_request(response):
     return response
 
 
-#Manejo de errores
-
+# Manejo de errores
 @app.errorhandler(404)
 def not_found_error(error):
     return "404 NOT FOUND", 404
+
 
 @app.errorhandler(500)
 def internal_error(error):
