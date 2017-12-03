@@ -1,4 +1,4 @@
-#!env/bin/python
+#!env/bin python
 # -*- coding: UTF-8 -*-
 '''
 @author: rafex
@@ -9,9 +9,9 @@ from cfg import getBoolean
 import netifaces as ni
 from nabix import app
 
-INTERFACE = get("server","interface")
-PORT = getInt("server","port")
-DEBUG = getBoolean("server","debug")
+INTERFACE = get("server", "interface")
+PORT = getInt("server", "port")
+DEBUG = getBoolean("server", "debug")
 
 ni.ifaddresses(INTERFACE)
 IP = ni.ifaddresses(INTERFACE)[2][0]['addr']
