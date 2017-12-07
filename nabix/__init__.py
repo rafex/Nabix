@@ -17,31 +17,22 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from cfg.logger import logger_request
 from cfg.logger import logger_response
+from cfg import get
+from StdSuites.AppleScript_Suite import app
+
+db = SQLAlchemy()
 
 app = Flask(__name__)
 CORS(app)
-
 app.secret_key = os.urandom(24)
-db_path = os.path.join(os.path.dirname(__file__), 'app.db')
+db_path = os.path.join(os.path.dirname(__file__), 'nabix.db')
 db_uri = 'sqlite:///{}'.format(db_path)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/rafex/job/personal/Nabix/db2.sqlite'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+db.init_app(app)
 
-db = SQLAlchemy(app)
 auth = HTTPBasicAuth()
-
-def init_db():
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
-    
-@app.cli.command('initdb')
-def initdb_command():
-    """Initializes the database."""
-    init_db()
-    print('Initialized the database.')
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -76,14 +67,16 @@ class User(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'Works Nabix 0.1.0!!!'
+    text = 'Works Nabix '
+    text = text + get('nabix','version')
+    text = text + ' !!!'
+    return text
 
 
 @app.before_request
 def log_request_info():
     uuid_request = uuid.uuid1()
     session['uuid-request'] = uuid_request
-
     logger_request.info('-----------------------------------------------------------------------------------------------')
     logger_request.info('---- REQUEST ----------------------------------------------------------------------------------')
     logger_request.info('-----------------------------------------------------------------------------------------------')
@@ -126,6 +119,5 @@ def not_found_error(error):
 @app.errorhandler(500)
 def internal_error(error):
     return "500 ERROR", 500
-
 
 from views import login
