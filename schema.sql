@@ -1,6 +1,10 @@
-drop table if exists account_holder;
-create table users (
-    id integer primary key not null unique,
-    username varchar(50) not null unique,
-    password text not null
+drop table if exists users;
+CREATE TABLE `users` (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`username`	varchar ( 20 ) NOT NULL UNIQUE,
+	`password_hash`	varchar ( 150 ) NOT NULL
+);
+
+CREATE UNIQUE INDEX `users_index` ON `users` (
+	`username`	ASC
 );

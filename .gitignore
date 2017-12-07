@@ -110,3 +110,8 @@ local.properties
 .cproject
 
 .DS_Store
+
+
+*.db
+*.sqlite
+*.db-journal

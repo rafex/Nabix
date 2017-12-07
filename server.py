@@ -7,7 +7,7 @@ from cfg import get
 from cfg import getInt
 from cfg import getBoolean
 import netifaces as ni
-from nabix import app
+from nabix import nabix
 
 INTERFACE = get("server", "interface")
 PORT = getInt("server", "port")
@@ -17,4 +17,4 @@ ni.ifaddresses(INTERFACE)
 IP = ni.ifaddresses(INTERFACE)[2][0]['addr']
 
 if __name__ == '__main__':
-    app.run(host=IP, port=PORT, debug=DEBUG)
+    nabix.run(host=IP, port=PORT, debug=DEBUG)
