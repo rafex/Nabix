@@ -6,7 +6,7 @@ from nabix import auth
 from nabix import nabix
 from nabix.vars import *
 from nabix.User import *
-from flask import abort, request, jsonify, g, url_for
+from flask import abort, request, jsonify, g
 
 @auth.verify_password
 def verify_password(username_or_token, password):
